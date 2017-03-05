@@ -1,0 +1,182 @@
+<html>
+<head>
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decade Of Change For University Students In Israel</title>
+<!-- Bootstrap Core CSS -->
+<!-- <link href="css/bootstrap.min.csss" rel="stylesheet"> -->
+<!-- Custom CSS -->
+<link href="css/theme.css" rel="stylesheet">
+<!-- Custom Fonts -->
+
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css" rel="stylesheet" type="text/css">
+<link href="bower_components/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" type="text/css">
+
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<!-- <script src="/bower_components/angular-route/angular-route.js"></script> -->
+<script src="bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="css/theme.css" rel="stylesheet">
+<!-- <script src="js/jquery-sortable.js"></script> -->
+<script src="js/d3.v3.min.js"></script>
+<script src="bower_components/bootstrap-select/js/bootstrap-select.js"></script>
+</head>
+<body>
+      <button onclick="ping()">ping</button>
+
+	    <div id="myImgId" style="width: 800px; height: 500px; background:#000;"  onmouseup="return false;">
+       <img src="1d265f42ca96c4c8.jpg" width="800" height="500" style="position:absolute;"/>
+
+       <svg id="svgOne" y="0" width="800" height="500" onclick="clicked_svg(evt)" style="position:absolute;">
+          </svg>
+    </div> 
+
+
+ <div id="myImgId2" style="width: 800px; height: 500px; background:#000; margin-top: 100px;"  onmouseup="return false;">
+       <img  src="1d265f42ca96c4c8.jpg" width="800" height="500" style="position:absolute;"/>
+
+       <svg  id="svgTwo" y="0" width="800" height="500" style="position:absolute;">
+          </svg>
+    </div> 
+    <script>
+    draw()
+    draw2()
+    function draw(){
+    	    		var svgns = "http://www.w3.org/2000/svg";
+
+    	    var ractSize = 20
+    	    var x = 0
+    	    var y = 0
+    	    while (x < 800){
+    	    	while ( y < 500){
+    	    		 var rect = document.createElementNS(svgns, 'rect');
+			        rect.setAttributeNS(null, 'x', x);
+			        rect.setAttributeNS(null, 'y', y);
+			        rect.setAttributeNS(null, 'height', ractSize);
+			        rect.setAttributeNS(null, 'width', ractSize);
+			        rect.setAttributeNS(null, 'stroke', 'black');
+			        rect.setAttributeNS(null, 'stroke-width', 0.1);
+
+			        	rect.setAttributeNS(null, 'fill', 'white');
+			        	rect.setAttributeNS(null, 'fill-opacity', '0');
+			        	rect.setAttributeNS(null, 'id', "t_"+x+"_"+y);
+
+			        document.getElementById('svgOne').appendChild(rect);
+			        y += ractSize
+    // console.log("x: "+x+" y:"+y);
+    	    	}
+    	    	x += ractSize
+    	    	y = 0;
+
+    	    }
+    }
+
+    function draw2(){
+    	    		var svgns = "http://www.w3.org/2000/svg";
+
+    	    var ractSize = 20
+    	    var x = 0
+    	    var y = 0
+    	    while (x < 800){
+    	    	while ( y < 500){
+    	    		 var rect = document.createElementNS(svgns, 'rect');
+			        rect.setAttributeNS(null, 'x', x);
+			        rect.setAttributeNS(null, 'y', y);
+			        rect.setAttributeNS(null, 'height', ractSize);
+			        rect.setAttributeNS(null, 'width', ractSize);
+			        rect.setAttributeNS(null, 'stroke', 'white');
+			        rect.setAttributeNS(null, 'stroke-width', 0.1);
+			        	rect.setAttributeNS(null, 'fill', 'black');
+			        	rect.setAttributeNS(null, 'fill-opacity', '1');
+			        	rect.setAttributeNS(null, 'id', x+"_"+y);
+			        	rect.setAttributeNS(null, 'onclick', 'clicked(evt)');
+
+			        document.getElementById('svgTwo').appendChild(rect);
+			        y += ractSize
+    // console.log("x: "+x+" y:"+y);
+    	    	}
+    	    	x += ractSize
+    	    	y = 0;
+
+    	    }
+    }
+
+     $('.click').click(function() {
+            console.log('ho ho ho');
+        });
+
+function t(){
+	console.log("t")
+}
+    	function clicked(evt){
+    		if (pin_f){
+    			return
+    		}
+    		    	    		var svgns = "http://www.w3.org/2000/svg";
+
+    		console.log("clicked")
+    var e = evt.target;
+    var dim = svgOne.getBoundingClientRect();
+    var x = evt.pageX - dim.left;
+    var y = evt.pageY - dim.top;
+    console.log(e.id);
+    $("#t_"+e.id).animate({ "fill-opacity": "0.7" }, 1000);
+    $("#"+e.id).animate({ "fill-opacity": "0" }, 1000);
+}  
+var pin_f = false;
+function ping(){
+	pin_f = true;
+}
+function clicked_svg(evt){
+	if (pin_f == false){
+		return
+	}
+	pin_f = false;
+    		    	    		var svgns = "http://www.w3.org/2000/svg";
+
+    		console.log("clicked")
+    var e = evt.target;
+    var dim = svgOne.getBoundingClientRect();
+    var x = evt.pageX - dim.left;
+    var y = evt.pageY - dim.top;
+    // console.log(e.id);
+    // $("#t_"+e.id).animate({ "fill-opacity": "0" }, 1000);
+    // $("#"+e.id).animate({ "fill-opacity": "0.7" }, 1000);
+
+    var ractSize = 15
+     var circle = document.createElementNS(svgns, 'circle');
+        circle.setAttributeNS(null, 'cx', x+ractSize/6);
+        circle.setAttributeNS(null, 'cy', y+ractSize/6);
+        circle.setAttributeNS(null, 'r', ractSize);
+        circle.setAttributeNS(null, 'stroke-width', 2);
+         circle.setAttributeNS(null, 'stroke', 'red');
+         circle.setAttributeNS(null, 'fill', 'none');
+
+        document.getElementById('svgOne').appendChild(circle);
+        
+
+ var circle2 = document.createElementNS(svgns, 'circle');
+        circle2.setAttributeNS(null, 'cx', x+ractSize/6);
+        circle2.setAttributeNS(null, 'cy', y+ractSize/6);
+        circle2.setAttributeNS(null, 'r', ractSize);
+        circle2.setAttributeNS(null, 'stroke-width', 2);
+         circle2.setAttributeNS(null, 'stroke', 'red');
+         circle2.setAttributeNS(null, 'fill', 'none');
+
+        document.getElementById('svgTwo').appendChild(circle2);
+
+}  
+
+
+
+    </script>
+</body>
+</html>
